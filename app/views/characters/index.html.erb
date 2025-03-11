@@ -1,0 +1,9 @@
+<div>
+  <% @characters.each do |character| %>
+    <div>
+      <%= character.name %>
+      <%= character.description %>
+      <%= link to "See more", @character %>
+    </div>
+  <% end %>
+</div>
