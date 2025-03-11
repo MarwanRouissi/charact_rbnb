@@ -23,7 +23,11 @@
           <%= link_to "Booking status", bookings_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Sign in", new_user_session_path, class: "nav-link" %>
+          <% if user_signed_in? %>
+            <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "btn btn-danger" %>
+          <% else %>
+            <%= link_to "Log in", new_user_session_path, class: "nav-link" %>
+          <% end %>
         </li>
       </ul>
     </div>
