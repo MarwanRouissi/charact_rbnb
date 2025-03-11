@@ -9,7 +9,17 @@ class BookingsController < ApplicationController
   end
 
   def create
-    raise
-    @booking = Booking.new
+    @character = Character.find(params[:character_id])
+    @booking = Booking.new(params_booking)
+    @booking.user = current_user
+    @booking.character = @character
+    @booking.save
+    redirect_to bookings_path
+  end
+
+  private
+
+  def params_booking
+    params.require(:booking).permit(:start_date, :end_date)
   end
 end
