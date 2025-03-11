@@ -7,4 +7,9 @@ class BookingsController < ApplicationController
     # un avec le reste
     # puis 2 each dans view pour séparer rentals et demandes d'autres users
   end
+
+  def create
+    raise
+    @booking = Booking.new
+  end
 end
