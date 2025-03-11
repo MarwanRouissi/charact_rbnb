@@ -1,0 +1,15 @@
+<div class="container">
+
+  <%# url(https://www.hidefninja.com/wp-content/uploads/2021/05/star-wars-banner-01-scaled.jpg)
+  is a placeholder for incomming category banner backgrounds %>
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://www.hidefninja.com/wp-content/uploads/2021/05/star-wars-banner-01-scaled.jpg);">
+    <div class="container">
+      <h1><%= @character.name %></h1>
+    <p><%= @character.description %></p>
+    </div>
+  </div>
+  <div>
+    <h3>Book it now!</h3>
+    <%= render 'bookings/form', booking: @booking %>
+  </div>
+</div>
