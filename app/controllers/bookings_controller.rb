@@ -13,8 +13,11 @@ class BookingsController < ApplicationController
     @booking = Booking.new(params_booking)
     @booking.user = current_user
     @booking.character = @character
-    @booking.save
-    redirect_to bookings_path
+    if @booking.save
+      redirect_to bookings_path
+    else
+      render 'characters/show', status: :unprocessable_entity
+    end
   end
 
   private
