@@ -2,17 +2,18 @@
 
 <div>
   <% @bookings.each do |booking| %>
-  <div>
-    <%= booking.user.email %>
-    <%= booking.character.name %>
-    <%= booking.start_date %>
-    <%= booking.end_date %>
-    <% if booking.book_status == true %>
-      <p>Accepted</p>
-    <% elsif booking.book_status == false %>
-      <p>Declined</p>
-    <% else %>
-      <p>Pending</p>
-    <% end %>
-  </div>
+    <div>
+      <%= booking.user.email %>
+      <%= booking.character.name %>
+      <%= booking.start_date %>
+      <%= booking.end_date %>
+      <% if booking.book_status == true %>
+        <p>Accepted</p>
+      <% elsif booking.book_status == false %>
+        <p>Declined</p>
+      <% else %>
+        <p>Pending</p>
+      <% end %>
+    </div>
+  <% end %>
 </div>
