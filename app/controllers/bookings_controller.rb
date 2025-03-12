@@ -13,7 +13,10 @@ class BookingsController < ApplicationController
     @booking = Booking.new(params_booking)
     @booking.user = current_user
     @booking.character = @character
-    if @booking.save
+    if @character.user == current_user
+      flash[:alert] = "sorry but you cannot rent your own characters"
+      render 'characters/show', status: :unprocessable_entity
+    elsif @booking.save
       redirect_to bookings_path
     else
       render 'characters/show', status: :unprocessable_entity
