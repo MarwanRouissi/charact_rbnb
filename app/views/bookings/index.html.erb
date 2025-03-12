@@ -1,19 +1,62 @@
-<h1>Your rentals</h1>
+<div class="container">
+<div class="my-5">
+  <h2 class="text-color-custom">Your bookings</h2>
 
-<div>
-  <% @bookings.each do |booking| %>
-    <div>
-      <%= booking.user.email %>
-      <%= booking.character.name %>
-      <%= booking.start_date %>
-      <%= booking.end_date %>
-      <% if booking.book_status == true %>
-        <p>Accepted</p>
-      <% elsif booking.book_status == false %>
-        <p>Declined</p>
-      <% else %>
-        <p>Pending</p>
-      <% end %>
-    </div>
-  <% end %>
+  <div>
+    <% @user_bookings.each do |booking| %>
+      <div class="d-flex booking-gap my-3">
+        <p>Character: <%= booking.character.name %> |</p>
+        <p>Starting date: <%= booking.start_date %> |</p>
+        <p>Ending date: <%= booking.end_date %> |</p>
+        <div>
+          <p> Booking status:
+            <% if booking.book_status == true %>
+              Accepted
+            <% elsif booking.book_status == false %>
+              Declined
+            <% else %>
+              Pending
+            <% end %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="my-5">
+  <h2 class="text-color-custom">Booking requests for your characters</h2>
+
+  <div>
+    <% @bookings_to_review.each do |booking| %>
+      <div>
+        <div class="d-flex booking-gap my-3">
+          <p>User: <%= booking.user.email %> |</p>
+          <p>Character: <%= booking.character.name %> |</p>
+          <p>Starting date: <%= booking.start_date %> |</p>
+          <p>Ending date: <%= booking.end_date %> |</p>
+            <div>
+              <p> Booking status:
+                <% case booking.book_status %>
+                  <% when true %>
+                    <i class="fa-solid fa-check"></i>
+                  <% when false %>
+                    <i class="fa-solid fa-xmark"></i>
+                  <% when nil %>
+                    <i class="fa-solid fa-hourglass-half"></i>
+                <% end %>
+              </p>
+            </div>
+        </div>
+
+        <div>
+          <%= simple_form_for booking do |f| %>
+            <%= f.input_field :book_status, collection: %i[pending accepted declined], prompt: booking.book_status %>
+            <%= f.button :submit, class: 'btn btn-custom' %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  </div>
 </div>
