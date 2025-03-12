@@ -6,8 +6,10 @@
           <div class="card-img-top">
             <% if character.photo.attached? %>
               <%= cl_image_tag character.photo.key, height: 200, width: 298, crop: :fill %>
+            <% elsif character.url_image != nil %>
+            <%= image_tag character.url_image, height: 200, width: 298 %>
             <% else %>
-            <%= image_tag "#{character.url_image}", height: 200, width: 298 %>
+            <%= image_tag "image.png", height: 200, width: 298 %>
             <% end %>
           </div>
           <div class="card-body">
