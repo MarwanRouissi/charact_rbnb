@@ -10,3 +10,95 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+/* CSS pour la connect box */
+
+.connect-box {
+  width: 300px;
+  height: 200px;
+  border: 1px solid #7A1CFF;
+  display: block;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* CSS pour la navigation */
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-nav .separator {
+  color: #7A1CFF;
+  padding: 0 10px;
+  font-size: 20px;
+  line-height: 1;
+  align-self: center;
+}
+
+.navbar .nav-link,
+.navbar .navbar-brand {
+  color: #7A1CFF !important;
+}
+
+.navbar .nav-link:hover {
+  color: #7A1CFF !important;
+}
+
+.navbar-toggler-icon {
+  filter: invert(1);
+}
+
+/* CSS pour le footer */
+
+footer {
+  background-color: #7A1CFF;
+  color: white;
+  padding: 1rem 0;
+  text-align: center;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* CSS pour le bouton login logout */
+
+.btn-custom {
+  background-color: #7A1CFF;
+  color: white;
+}
+
+.btn-custom:hover {
+  background-color: white;
+  border-color:#7A1CFF;
+  color: #7A1CFF !important;
+}
+
+/* CSS pour le titre */
+
+.navbar-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #7A1CFF;
+}
+
+.site-title {
+  margin: 0;
+}
+
+/* responsive */
+
+@media (max-width: 1600px) {
+  .navbar-title {
+    display: none;
+  }
+}
+
+@media (max-width: 750px) {
+  .navbar-nav .separator {
+    display: none;
+  }
+}

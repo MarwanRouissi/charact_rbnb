@@ -1,7 +1,16 @@
-<%= simple_form_for [character, booking] do |f| %>
-  <%= f.input :start_date, as: :string,
-    input_html: { data: { controller: "datepicker" } } %>
-  <%= f.input :end_date, as: :string,
-    input_html: { data: { controller: "datepicker" } } %>
-  <%= f.button :submit, class: 'btn btn-primary' %>
+<% if user_signed_in? %>
+  <%= simple_form_for [character, booking] do |f| %>
+    <%= f.input :start_date, as: :string,
+      input_html: { data: { controller: "datepicker" } } %>
+    <%= f.input :end_date, as: :string,
+      input_html: { data: { controller: "datepicker" } } %>
+    <%= f.button :submit, class: 'btn btn-primary' %>
+  <% end %>
+<% else %>
+<div class="container">
+<div class="connect-box">
+  <p>Wait a minute, you need an account in order to process</p>
+  <%= link_to "Log in", new_user_session_path, class: "btn btn-primary" %>
+</div>
+</div>
 <% end %>
