@@ -89,6 +89,18 @@ footer {
   margin: 0;
 }
 
+/* CSS pour le texte */
+
+.text-color-custom {
+  color: #7A1CFF;
+}
+
+/* CSS pour le booking index */
+
+.booking-gap {
+  gap: 20px;
+}
+
 /* responsive */
 
 @media (max-width: 1600px) {

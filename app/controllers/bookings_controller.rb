@@ -20,21 +20,20 @@ class BookingsController < ApplicationController
 
   def update
     @booking = Booking.find(params[:id])
+    book_status_value
+    redirect_to bookings_path
 
-    if @booking.update(book_status: book_status_value)
-      redirect_to bookings_path
-    else
-      redirect_to bookings_path, status: :unprocessable_entity
-    end
+    flash[:notice] = "Your booking was updated successfully"
   end
 
   private
 
   def book_status_value
-    case params[:book_status]
-    when "accepted" then true
-    when "declined" then false
-    when "pending" then nil
+    case params[:booking][:book_status]
+    when "accepted" then @booking.update(book_status: true)
+    when "declined" then @booking.update(book_status: false)
+    when "pending" then @booking.update(book_status: nil)
+    when nil then redirect_to bookings_path, status: :unprocessable_entity
     end
   end
 
