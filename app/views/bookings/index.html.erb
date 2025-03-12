@@ -1,9 +1,8 @@
-<h1>Your rentals</h1>
+<h2>Your bookings</h2>
 
 <div>
-  <% @bookings.each do |booking| %>
+  <% @user_bookings.each do |booking| %>
     <div>
-      <%= booking.user.email %>
       <%= booking.character.name %>
       <%= booking.start_date %>
       <%= booking.end_date %>
@@ -13,6 +12,24 @@
         <p>Declined</p>
       <% else %>
         <p>Pending</p>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<h2>Booking requests for your characters</h2>
+<div>
+  <% @bookings_to_review.each do |booking| %>
+    <div>
+      <%= booking.user.email %>
+      <%= booking.character.name %>
+      <%= booking.start_date %>
+      <%= booking.end_date %>
+    </div>
+    <div>
+      <%= simple_form_for booking do |f| %>
+        <%= f.input_field :book_status, collection: %i[pending accepted declined], prompt: booking.book_status %>
+        <%= f.button :submit, class: 'btn btn-primary' %>
       <% end %>
     </div>
   <% end %>
