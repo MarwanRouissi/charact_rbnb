@@ -11,6 +11,38 @@
 @import "components/index";
 @import "pages/index";
 
+/* CSS pour le carousel */
+
+.carousel-item img {
+  height: 600px;
+  object-fit: cover;
+}
+
+/* CSS pour les headline */
+
+.headline {
+  font-size: 2rem;
+  // font-weight: bold;
+  color: black; /* Violet signature */
+  text-shadow: 2px 2px 8px rgba(86, 84, 89, 0.3); /* Effet lumineux */
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.brand-name {
+  color: #7A1CFF; /* Couleur accrocheuse */
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.subheadline {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  font-style: italic;
+  opacity: 0.8;
+}
+
 /* CSS pour la connect box */
 
 .connect-box {

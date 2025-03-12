@@ -1,2 +1,44 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <%= image_tag "one.jpeg", alt: "carroussel-one", class: "d-block w-100" %>
+    </div>
+    <div class="carousel-item">
+      <%= image_tag "two.avif", alt: "carroussel-two", class: "d-block w-100" %>
+    </div>
+    <div class="carousel-item">
+      <%= image_tag "three.jpg", alt: "carroussel-three", class: "d-block w-100" %>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<br><br>
+<div class="container">
+  <div class="row justify-content-center text-center">
+    <div class="col-md-10">
+      <h2 class="headline">
+        “Ever dreamed of renting Gandalf for your office party? Or hiring Darth Vader as your personal trainer?
+        Welcome to <span class="brand-name">Charact’rBnB</span> – the only place where legends are just a booking away!
+        Choose your hero, villain, or sidekick and bring the magic to life!”
+      </h2>
+      <h3 class="subheadline">“Why meet ordinary people when you can rent extraordinary ones?”</h3>
+    </div>
+  </div>
+  <div class="my-5"></div>
+  <div class="row">
+    <div class="text-center"><%= link_to "Browse all our products", characters_path, class: "btn btn-lg btn-custom" %></div>
+  </div>
+</div>
