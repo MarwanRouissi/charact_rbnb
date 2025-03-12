@@ -4,27 +4,35 @@
       <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
     <% end %>
 
+    <div class="navbar-title mx-auto">
+      <h2 class="site-title">Charact'rBnB</h2>
+    </div>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
-        <li class="nav-item active">
+        <li class="nav-item">
           <%= link_to "Home", root_path, class: "nav-link" %>
         </li>
+        <li class="nav-item separator">-</li>
         <li class="nav-item">
           <%= link_to "Chars to rent", characters_path, class: "nav-link" %>
         </li>
+        <li class="nav-item separator">-</li>
         <li class="nav-item">
           <%= link_to "Rent your own", new_character_path, class: "nav-link" %>
         </li>
+        <li class="nav-item separator">-</li>
         <li class="nav-item">
           <%= link_to "Booking status", bookings_path, class: "nav-link" %>
         </li>
+        <li class="nav-item separator">-</li>
         <li class="nav-item">
           <% if user_signed_in? %>
-            <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "btn btn-danger" %>
+            <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "btn btn-custom" %>
           <% else %>
             <%= link_to "Log in", new_user_session_path, class: "nav-link" %>
           <% end %>
