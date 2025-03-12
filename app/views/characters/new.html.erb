@@ -2,6 +2,9 @@
 
 <%= simple_form_for @character do |f| %>
 <%= f.input :name %>
+<%= f.input :price %>
+<%= f.input :wtf_phrase %>
+<%= f.input :activity %>
 <%= f.input :category, collection: ["Star Wars", "The Lord of the Rings", "The Legend of Zelda", "Dune"]%>
 <%= f.input :description %>
 <%= f.input :photo, as: :file %>

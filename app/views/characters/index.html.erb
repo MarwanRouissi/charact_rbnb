@@ -1,14 +1,22 @@
-<div class="container row row-cols-1 row-cols-md-3 g-4 mx-auto mt-5">
-  <% @characters.each do |character| %>
-    <div class="col">
-      <div class="card" style="width: 300px; height: 390px;">
-        <div class="card-img-top"><%= cl_image_tag character.photo.key, height: 225, width: 298, crop: :fill if character.photo.attached?%></div>
-        <div class="card-body">
-          <h5 class="card-title"><%= character.name %></h5>
-          <p class="card-text"><%= character.description %></p>
-          <%= link_to "See more", character%>
+<div class="container">
+  <div class="row row-cols-1 row-cols-md-3 g-4 mx-auto mt-5">
+    <% @characters.each do |character| %>
+      <div class="col">
+        <div class="card" style="width: 300px; height: 430px;">
+          <div class="card-img-top">
+            <% if character.photo.attached? %>
+              <%= cl_image_tag character.photo.key, height: 200, width: 298, crop: :fill %>
+            <% else %>
+            <%= image_tag "#{character.url_image}", height: 200, width: 298 %>
+            <% end %>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title"><%= character.name %></h5>
+            <p class="card-text"><%= character.description %></p>
+            <%= link_to "See more", character, class: "btn btn-custom"%>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
