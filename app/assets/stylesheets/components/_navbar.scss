@@ -10,3 +10,131 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+/* CSS pour la navigation */
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-nav .separator {
+  color: #7A1CFF;
+  padding: 0 10px;
+  font-size: 20px;
+  line-height: 1;
+  align-self: center;
+}
+
+.navbar .nav-link,
+.navbar .navbar-brand {
+  color: #7A1CFF !important;
+}
+
+/* CSS pour l'animation des liens du menu */
+
+// propal double ligne
+.nav-link {
+  position: relative;
+  text-decoration: none;
+  display: inline-block;
+  padding: 5px 10px;
+  transition: color 0.3s ease-out;
+}
+
+.nav-link::after,
+.nav-link::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease-out, width 0.3s ease-out, left 0.3s ease-out;
+}
+
+.nav-link::after {
+  bottom: -3px;
+}
+
+.nav-link::before {
+  top: -3px;
+}
+
+.nav-link:hover::after,
+.nav-link:hover::before {
+  transform: scaleX(1);
+  width: 100%;
+  left: 0;
+}
+
+.nav-link.active::after,
+.nav-link.active::before {
+  transform: scaleX(1);
+  width: 100%;
+  left: 0;
+}
+
+// propal simple ligne
+// .nav-link {
+//   position: relative;
+//   text-decoration: none;
+//   display: inline-block;
+//   padding: 5px 10px;
+//   transition: color 0.3s ease-out;
+// }
+
+// .nav-link::after {
+//   content: "";
+//   position: absolute;
+//   left: 50%;
+//   bottom: -3px;
+//   width: 0;
+//   height: 2px;
+//   background-color: currentColor;
+//   transform: scaleX(0);
+//   transform-origin: center;
+//   transition: transform 0.3s ease-out, width 0.3s ease-out, left 0.3s ease-out;
+// }
+
+// .nav-link:hover::after {
+//   transform: scaleX(1);
+//   width: 100%;
+//   left: 0;
+// }
+
+// .nav-link.active::after {
+//   transform: scaleX(1);
+//   width: 100%;
+//   left: 0;
+// }
+
+/* CSS pour le titre */
+
+.navbar-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #7A1CFF;
+}
+
+/* CSS pour le bouton login logout */
+
+.btn-custom {
+  background-color: #7A1CFF;
+  color: white;
+}
+
+.btn-custom:hover {
+  background-color: white;
+  border-color:#7A1CFF;
+  color: #7A1CFF !important;
+}
+
+.site-title {
+  margin: 0;
+}
