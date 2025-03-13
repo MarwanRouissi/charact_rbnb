@@ -11,6 +11,12 @@
 @import "components/index";
 @import "pages/index";
 
+/* CSS pour corriger le p */
+
+p {
+  margin-bottom: unset;
+}
+
 /* CSS pour le carousel */
 
 .carousel-item img {
@@ -125,12 +131,6 @@ footer {
 
 .text-color-custom {
   color: #7A1CFF;
-}
-
-/* CSS pour le booking index */
-
-.booking-gap {
-  gap: 20px;
 }
 
 /* responsive */

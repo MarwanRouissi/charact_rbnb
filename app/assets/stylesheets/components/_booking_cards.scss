@@ -1,0 +1,59 @@
+.booking-card-inside {
+  margin: 10px 20px;
+}
+
+.booking-card {
+  display: flex;
+  box-shadow: 0px 0px 10px rgba(68, 0, 165, 0.36);
+  border-radius: 5px;
+  width: 100%;
+}
+
+.booking-card:hover {
+  box-shadow: 0px 0px 10px rgba(122, 28, 255, 0.7);
+}
+
+.booking-character-text {
+  color: #7A1CFF;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.booking-card-img {
+  height: 150px;
+  width: 150px;
+  border-radius: 5px;
+  object-fit: cover;
+  margin: 10px;
+}
+
+.booking-card-gap {
+  gap: 30px;
+}
+
+.booking-pending-color {
+  background-color: rgba(253, 126, 20, 0.5);
+  color: white;
+  border: 1px solid #fd7e14;
+  padding: 15px 30px;
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+.booking-accepted-color {
+  background-color: rgba(25, 135, 84, 0.5);
+  color: white;
+  border: 1px solid rgb(25, 135, 84);
+  padding: 15px 30px;
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+.booking-decined-color {
+  background-color: rgba(220, 53, 69, 0.5);
+  color: white;
+  border: 1px solid rgb(220, 53, 69);
+  padding: 15px 30px;
+  border-radius: 5px;
+  font-size: 20px;
+}
