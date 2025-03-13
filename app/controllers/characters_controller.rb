@@ -3,6 +3,15 @@ class CharactersController < ApplicationController
 
   def index
     @characters = Character.all
+    @totalchars = Character.all
+
+    if params[:query].present?
+      @characters = @characters.where("name ILIKE ?", "%#{params[:query]}%")
+    end
+
+    if params[:category].present?
+      @characters = @characters.where(category: params[:category])
+    end
   end
 
   def show
