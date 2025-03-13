@@ -1,24 +1,27 @@
 <div class="container">
-  <div class="row row-cols-1 row-cols-md-3 g-4 mx-auto mt-5">
+  <div class="row-container">
     <% @characters.each do |character| %>
-      <div class="col">
-        <div class="card mx-auto" style="width: 300px; height: 430px;">
+    <%= link_to character_path(character), class: 'text-decoration-none' do %>
+        <div class="card-characters">
+        <div class="card-border"></div>
           <div class="card-img-top">
             <% if character.photo.attached? %>
-              <%= cl_image_tag character.photo.key, height: 200, width: 298, crop: :fill %>
+              <%= cl_image_tag character.photo.key, height: 250, width: 350, crop: :fill %>
             <% elsif character.url_image != nil %>
-            <%= image_tag character.url_image, height: 200, width: 298 %>
+              <%= image_tag character.url_image, height: 250, width: 350 %>
             <% else %>
-            <%= image_tag "image.png", height: 200, width: 298 %>
+              <%= image_tag "image.png", height: 250, width: 350 %>
             <% end %>
           </div>
           <div class="card-body">
-            <h5 class="card-title"><%= character.name %></h5>
+            <div class="title-price">
+              <h5 class="card-title"><%= character.name %></h5>
+              <p class="card-price">$ <%= character.price %></p>
+            </div>
             <p class="card-text"><%= character.description %></p>
-            <%= link_to "See more", character, class: "btn btn-custom"%>
           </div>
         </div>
-      </div>
+     <% end %>
     <% end %>
   </div>
 </div>
