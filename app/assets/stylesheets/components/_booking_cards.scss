@@ -2,6 +2,17 @@
   margin: 10px 20px;
 }
 
+.booking-card-price {
+  margin-top: 15px;
+  margin-left: 20px;
+}
+
+.delete-btn {
+  position: absolute;
+  margin-right: 10px;
+  right: 0px;
+}
+
 .booking-card {
   display: flex;
   box-shadow: 0px 0px 10px rgba(68, 0, 165, 0.36);
@@ -31,32 +42,41 @@
   gap: 30px;
 }
 
-.booking-pending-color {
-  background-color: rgba(253, 126, 20, 0.5);
+.booking-status-color {
+  background-color: rgba(122, 28, 255, 0.5);
   color: white;
-  border: 1px solid #fd7e14;
+  border: 1px solid #7A1CFF;
   padding: 15px 30px;
   border-radius: 5px;
   font-size: 20px;
 }
 
-.booking-accepted-color {
-  background-color: rgba(25, 135, 84, 0.5);
-  color: white;
-  border: 1px solid rgb(25, 135, 84);
-  padding: 15px 30px;
-  border-radius: 5px;
-  font-size: 20px;
-}
+// .booking-pending-color {
+//   background-color: rgba(253, 126, 20, 0.5);
+//   color: white;
+//   border: 1px solid #fd7e14;
+//   padding: 15px 30px;
+//   border-radius: 5px;
+//   font-size: 20px;
+// }
 
-.booking-decined-color {
-  background-color: rgba(220, 53, 69, 0.5);
-  color: white;
-  border: 1px solid rgb(220, 53, 69);
-  padding: 15px 30px;
-  border-radius: 5px;
-  font-size: 20px;
-}
+// .booking-accepted-color {
+//   background-color: rgba(25, 135, 84, 0.5);
+//   color: white;
+//   border: 1px solid rgb(25, 135, 84);
+//   padding: 15px 30px;
+//   border-radius: 5px;
+//   font-size: 20px;
+// }
+
+// .booking-declined-color {
+//   background-color: rgba(220, 53, 69, 0.5);
+//   color: white;
+//   border: 1px solid rgb(220, 53, 69);
+//   padding: 15px 30px;
+//   border-radius: 5px;
+//   font-size: 20px;
+// }
 
 .booking-position-relative {
   position: relative;
