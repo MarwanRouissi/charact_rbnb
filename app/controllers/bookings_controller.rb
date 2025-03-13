@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   def index
-    @bookings = Booking.all
+    @bookings = Booking.all.order(created_at: :asc)
 
     @user_bookings = @bookings.select { |booking| booking.user == current_user }
     @bookings_to_review = @bookings.select { |booking| booking.character.user == current_user }
@@ -20,6 +20,12 @@ class BookingsController < ApplicationController
     redirect_to bookings_path
 
     flash[:notice] = "Your booking was updated successfully"
+  end
+
+  def destroy
+    @booking = Booking.find(params[:id])
+    @booking.destroy
+    redirect_to bookings_path
   end
 
   private
