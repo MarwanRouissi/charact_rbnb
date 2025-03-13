@@ -4,10 +4,6 @@ class BookingsController < ApplicationController
 
     @user_bookings = @bookings.select { |booking| booking.user == current_user }
     @bookings_to_review = @bookings.select { |booking| booking.character.user == current_user }
-    # séparer bookings en 2 arrays
-    # un où characters.user == current_user
-    # un avec le reste
-    # puis 2 each dans view pour séparer rentals et demandes d'autres users
   end
 
   def create

@@ -1,61 +1,87 @@
-<div class="container">
-<div class="my-5">
-  <h2 class="text-color-custom">Your bookings</h2>
+<div class="container bg-white flex-grow-1 my-4">
+<div class="mt-4 mx-4 w-100">
+  <h2 class="text-color-custom mb-2">Your bookings</h2>
 
-  <div>
+  <div class="d-flex booking-card-gap m-3 flex-wrap">
     <% @user_bookings.each do |booking| %>
-      <div class="d-flex booking-gap my-3">
-        <p>Character: <%= booking.character.name %> |</p>
-        <p>Starting date: <%= booking.start_date %> |</p>
-        <p>Ending date: <%= booking.end_date %> |</p>
+
+      <%= link_to character_path(booking.character), class: 'text-decoration-none' do %>
+      <div class="booking-card p-2">
+
+        <img src=<%= booking.character.url_image %> class="booking-card-img">
         <div>
-          <p> Booking status:
+          <div class="booking-card-inside">
+            <span class="booking-character-text"><%= booking.character.name %></span>
+          </div>
+          <div class="booking-card-inside text-black">
+            <span><%= booking.start_date %> /
+            <br>
+            <%= booking.end_date %></span>
+          </div>
+          <div class="booking-card-inside">
             <% if booking.book_status == true %>
-              Accepted
+              <i class="fa-solid fa-check booking-accepted-color"></i>
             <% elsif booking.book_status == false %>
-              Declined
+              <i class="fa-solid fa-xmark booking-decined-color"></i>
             <% else %>
-              Pending
+              <i class="fa-solid fa-hourglass-half booking-pending-color"></i>
             <% end %>
-          </p>
+          </div>
         </div>
       </div>
+      <% end %>
+
     <% end %>
   </div>
 </div>
 
-<div class="my-5">
+<div class="mt-4 mx-4 w-100">
   <h2 class="text-color-custom">Booking requests for your characters</h2>
 
-  <div>
+  <div class="d-flex booking-card-gap m-3 flex-wrap">
     <% @bookings_to_review.each do |booking| %>
       <div>
-        <div class="d-flex booking-gap my-3">
-          <p>User: <%= booking.user.email %> |</p>
-          <p>Character: <%= booking.character.name %> |</p>
-          <p>Starting date: <%= booking.start_date %> |</p>
-          <p>Ending date: <%= booking.end_date %> |</p>
+        <%= link_to character_path(booking.character), class: 'text-decoration-none' do %>
+          <div class="booking-card p-2">
+            <img src=<%= booking.character.url_image %> class="booking-card-img">
             <div>
-              <p> Booking status:
-                <% case booking.book_status %>
-                  <% when true %>
-                    <i class="fa-solid fa-check"></i>
-                  <% when false %>
-                    <i class="fa-solid fa-xmark"></i>
-                  <% when nil %>
-                    <i class="fa-solid fa-hourglass-half"></i>
-                <% end %>
-              </p>
-            </div>
-        </div>
+              <div class="booking-card-inside booking-character-text">
+                <span><%= booking.character.name %></span>
+              </div>
+              <div class="booking-card-inside text-black">
+                <span><%= booking.user.email %></span>
+              </div>
+              <div class="booking-card-inside text-black">
+                <span><%= booking.start_date %> /
+                <br>
+                <%= booking.end_date %></span>
+              </div>
 
-        <div>
+              <div class="booking-card-inside">
+                <p>
+                  <% case booking.book_status %>
+                    <% when true %>
+                      <i class="fa-solid fa-check booking-accepted-color"></i>
+                    <% when false %>
+                      <i class="fa-solid fa-xmark booking-decined-color"></i>
+                    <% when nil %>
+                      <i class="fa-solid fa-hourglass-half booking-pending-color"></i>
+                  <% end %>
+                </p>
+              </div>
+
+            </div>
+          </div>
+        <% end %>
+
+        <div class="mt-3">
           <%= simple_form_for booking do |f| %>
             <%= f.input_field :book_status, collection: %i[pending accepted declined], prompt: booking.book_status %>
-            <%= f.button :submit, class: 'btn btn-custom' %>
+            <%= f.button :submit, class: 'btn btn-custom ms-2' %>
           <% end %>
         </div>
       </div>
+
     <% end %>
   </div>
   </div>
