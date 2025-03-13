@@ -8,7 +8,16 @@
       <%= link_to character_path(booking.character), class: 'text-decoration-none' do %>
       <div class="booking-card p-2">
 
-        <img src=<%= booking.character.url_image %> class="booking-card-img">
+        <div>
+          <% if booking.character.photo.attached?%>
+            <%= cl_image_tag booking.character.photo.key, class: 'booking-card-img' %>
+          <% elsif booking.character.url_image.present? %>
+            <%= image_tag booking.character.url_image, class: 'booking-card-img' %>
+          <% else %>
+            <%= image_tag "image.png", class: 'booking-card-img' %>
+          <% end %>
+        </div>
+
         <div>
           <div class="booking-card-inside">
             <span class="booking-character-text"><%= booking.character.name %></span>
@@ -40,10 +49,20 @@
 
   <div class="d-flex booking-card-gap m-3 flex-wrap">
     <% @bookings_to_review.each do |booking| %>
-      <div>
+      <div data-controller="booking-status-select" class="booking-position-relative">
         <%= link_to character_path(booking.character), class: 'text-decoration-none' do %>
           <div class="booking-card p-2">
-            <img src=<%= booking.character.url_image %> class="booking-card-img">
+
+          <div>
+            <% if booking.character.photo.attached?%>
+              <%= cl_image_tag booking.character.photo.key, class: 'booking-card-img' %>
+            <% elsif booking.character.url_image.present? %>
+              <%= image_tag booking.character.url_image, class: 'booking-card-img' %>
+            <% else %>
+            <%= image_tag "image.png", class: 'booking-card-img' %>
+            <% end %>
+          </div>
+
             <div>
               <div class="booking-card-inside booking-character-text">
                 <span><%= booking.character.name %></span>
@@ -56,8 +75,8 @@
                 <br>
                 <%= booking.end_date %></span>
               </div>
-
-              <div class="booking-card-inside">
+        <% end %>
+              <div class="booking-card-inside" data-action="click->booking-status-select#display">
                 <p>
                   <% case booking.book_status %>
                     <% when true %>
@@ -72,14 +91,16 @@
 
             </div>
           </div>
-        <% end %>
 
-        <div class="mt-3">
-          <%= simple_form_for booking do |f| %>
-            <%= f.input_field :book_status, collection: %i[pending accepted declined], prompt: booking.book_status %>
-            <%= f.button :submit, class: 'btn btn-custom ms-2' %>
-          <% end %>
-        </div>
+
+        <% if booking.book_status.nil? %>
+            <div class="mt-3 booking-status-position d-none" data-booking-status-select-target="selectList">
+              <%= simple_form_for booking do |f| %>
+                <%= f.input_field :book_status, collection: %i[pending accepted declined], prompt: booking.book_status %>
+                <%# <%= f.button :submit, class: 'btn btn-custom ms-2' %>
+              <% end %>
+            </div>
+        <% end %>
       </div>
 
     <% end %>
