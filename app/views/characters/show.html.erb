@@ -29,7 +29,7 @@
   <div data-controller="update-total" class="border border-dark col-2 mx-3 rounded-3 p-2">
     <div>
       <h3 class="text-center">Book it now!</h3>
-      <p><strong data-update-total-target="price"><%= @character.price %></strong> <i class="fa-solid fa-coins"></i> per day</p>
+      <p><i class="fa-solid fa-coins"></i> <strong data-update-total-target="price"><%= @character.price %></strong> per day</p>
       <div data-update-total-target="form" class="d-flex">
         <%= render 'bookings/form', character: @character, booking: @booking%>
       </div>
