@@ -1,0 +1,20 @@
+.form-container {
+  margin: 2rem auto;
+  width: 40%;
+  background-color: white;
+  padding: 2rem;
+}
+
+h1 {
+  text-align: center;
+  color:  #7a1cffb3;
+}
+
+.form-group-inline {
+  display: flex;
+  gap: 20px;
+}
+
+.input-flex-grow{
+  flex-grow: 1;
+}
