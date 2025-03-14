@@ -1,41 +1,78 @@
-<div class="banner" style='background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("<%= asset_path(@character.category+".jpg") %>");'>
-  <div class="container">
-    <div class="d-flex mx-3">
-      <div class="mx-1 border border-dark ml-auto">
-      <% if @character.photo.attached? %>
-        <%= cl_image_tag @character.photo.key, height: 200, width: 298, crop: :fill %>
-      <% elsif @character.url_image != nil %>
-        <%= image_tag @character.url_image, height: 200, width: 298 %>
-      <% else %>
-        <%= image_tag "image.png", height: 200, width: 298 %>
-      <% end %>
+<div class="banner" style='background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("<%= asset_path(@character.category+".jpg") %>");'></div>
+<div class="container my-4">
+  <div class="row">
+      <!-- Character Details -->
+      <div class="col-md-8">
+          <div class="card p-4 py-5">
+              <div class="d-flex align-items-center mb-3 justify-content-around">
+                  <% if @character.photo.attached? %>
+                    <%= cl_image_tag @character.photo.key, height: 200, width: 298, crop: :fill %>
+                  <% elsif @character.url_image != nil %>
+                    <%= image_tag @character.url_image, height: 200, width: 298 %>
+                  <% else %>
+                    <%= image_tag "image.png", height: 200, width: 298 %>
+                  <% end %>
+                  <div>
+                      <h1 class="custom-text"><%= @character.name %></h1>
+                      <p class="fst-italic"><%= @character.wtf_phrase %></p>
+                      <p><strong>Height:</strong> <%= @character.height %> | <strong>Eye Color:</strong> <%= @character.eye_color %> </p>
+                  </div>
+              </div>
+              <p><%= @character.larger_description %></p>
+
+              <!-- He loves & Skills -->
+              <div class="row">
+                  <div class="col-md-6">
+                      <h3 class="section-header">Loves ❤️</h3>
+                      <ul class="list-group">
+                          <li class="list-group-item"><%= @character.loves_most_1 %></li>
+                          <li class="list-group-item"><%= @character.loves_most_2 %></li>
+                          <li class="list-group-item"><%= @character.loves_most_3 %></li>
+                      </ul>
+                  </div>
+                  <div class="col-md-6">
+                      <h3 class="section-header">Skills 🔥</h3>
+                      <ul class="list-group">
+                          <li class="list-group-item"><%= @character.skill_1 %></li>
+                          <li class="list-group-item"><%= @character.skill_2 %></li>
+                          <li class="list-group-item"><%= @character.skill_3 %></li>
+                      </ul>
+                  </div>
+              </div>
+
+              <!-- Signature Activity & Best Friend -->
+              <div class="row mt-3">
+                  <div class="col-md-6">
+                      <h3 class="section-header">Signature Activity 🧘</h3>
+                      <div class="category-box"><%= @character.activity %></div>
+                  </div>
+                  <div class="col-md-6">
+                      <h3 class="section-header">Best Friend 👥</h3>
+                      <div class="category-box"><%= @character.best_friend %></div>
+                  </div>
+              </div>
+          </div>
       </div>
-      <div class="mx-2">
-        <h1 class="py-3"><%= @character.name %></h1>
-        <p class="align-text-bottom">
-          <i class="fa-solid fa-quote-left"></i>
-          <%= @character.wtf_phrase %>
-          <i class="fa-solid fa-quote-right"></i>
-        </p>
-      </div>
+
+<!-- Booking Sidebar -->
+    <div class="col-md-4">
+      <div class="card p-3">
+          <div class="text-center">
+            <span class="price" style="color:rgba(68, 0, 165, 0.50)"><%= @character.price == @character.price.to_i ? @character.price.to_i : @character.price%> <i class="fa-solid fa-coins"></i> / day</span>
+            <p class="text-muted"><%= @character.price_comment %></p>
+          </div>
+
+          <div class="d-flex justify-content-between mb-3">
+            <%= render 'bookings/form', character: @character, booking: @booking%>
+          </div>
+
+          <p class="text-muted text-center mt-2 border-top pt-3">You’ll be charged only on confirmation<br>... well i guess 🤔</p>
+
+          <%# <div class="total-section d-flex justify-content-between border-top pt-3">
+            <span>Total</span>
+            <span>1 232 €</span>
+          </div> %>
     </div>
-  </div>
-</div>
-<div class="d-flex justify-content-between my-2">
-  <div class="col-9 text-center">
-    <p><%= @character.activity %></p>
-    <p><%= @character.description %></p>
-  </div>
-  <div data-controller="update-total" class="border border-dark col-2 mx-3 rounded-3 p-2">
-    <div>
-      <h3 class="text-center">Book it now!</h3>
-      <p><i class="fa-solid fa-coins"></i> <strong data-update-total-target="price"><%= @character.price %></strong> per day</p>
-      <div data-update-total-target="form" class="d-flex">
-        <%= render 'bookings/form', character: @character, booking: @booking%>
-      </div>
     </div>
-    <%# <div class="my-3 border-top pt-3">
-      <p>Total</p>
-    </div> %>
   </div>
 </div>

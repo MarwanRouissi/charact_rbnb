@@ -1,10 +1,16 @@
 <% if user_signed_in? %>
   <%= simple_form_for [character, booking] do |f| %>
     <%= f.input :start_date, as: :string,
-      input_html: { data: { controller: "datepicker" } } %>
+      input_html: {
+        data: { controller: "datepicker" },
+        placeholder: Date.today
+        } %>
     <%= f.input :end_date, as: :string,
-      input_html: { data: { controller: "datepicker" } } %>
-    <%= f.button :submit, class: 'btn btn-custom' %>
+      input_html: {
+        data: { controller: "datepicker" },
+        placeholder: Date.today + 1
+        } %>
+    <%= f.button :submit, 'Book now !', class: 'btn btn-custom' %>
   <% end %>
 <% else %>
 <div class="container">

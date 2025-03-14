@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_03_12_113919) do
+ActiveRecord::Schema[7.1].define(version: 2025_03_14_110354) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -65,6 +65,17 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_12_113919) do
     t.float "price"
     t.string "activity"
     t.string "url_image"
+    t.string "larger_description"
+    t.string "skill_1"
+    t.string "skill_2"
+    t.string "skill_3"
+    t.string "loves_most_1"
+    t.string "loves_most_2"
+    t.string "loves_most_3"
+    t.float "height"
+    t.string "eye_color"
+    t.string "best_friend"
+    t.string "price_comment"
     t.index ["user_id"], name: "index_characters_on_user_id"
   end
 
