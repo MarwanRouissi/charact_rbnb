@@ -6,9 +6,9 @@
           <div class="card p-4 py-5">
               <div class="d-flex align-items-center mb-3 justify-content-around">
                   <% if @character.photo.attached? %>
-                    <%= cl_image_tag @character.photo.key, height: 200, width: 298, crop: :fill %>
+                    <%= cl_image_tag @character.photo.key, height: 200, width: 298, class: "cloudin-img" %>
                   <% elsif @character.url_image != nil %>
-                    <%= image_tag @character.url_image, height: 200, width: 298 %>
+                    <%= image_tag @character.url_image, height: 200, width: 298, class: "cloudin-img" %>
                   <% else %>
                     <%= image_tag "image.png", height: 200, width: 298 %>
                   <% end %>
