@@ -13,29 +13,29 @@
                     <%= image_tag "image.png", height: 200, width: 298 %>
                   <% end %>
                   <div>
-                      <h1 class="text-primary"><%= @character.name %></h1>
+                      <h1 class="custom-text"><%= @character.name %></h1>
                       <p class="fst-italic"><%= @character.wtf_phrase %></p>
-                      <p><strong>Height:</strong> 0.66m | <strong>Eye Color:</strong> Green</p>
+                      <p><strong>Height:</strong> <%= @character.height %> | <strong>Eye Color:</strong> <%= @character.eye_color %> </p>
                   </div>
               </div>
-              <p>A 900-year-old Jedi Master, Yoda is the ultimate wise mentor, cryptic speech included. He may walk like a turtle, but don’t let that fool you—he can backflip into battle and fling enemies around with his mind. He enjoys meditation, lifting rocks for fun, and judging people silently.</p>
+              <p><%= @character.larger_description %></p>
 
               <!-- He loves & Skills -->
               <div class="row">
                   <div class="col-md-6">
-                      <h3 class="section-header">He loves ❤️</h3>
+                      <h3 class="section-header">Loves ❤️</h3>
                       <ul class="list-group">
-                          <li class="list-group-item">Tai Chi in the park</li>
-                          <li class="list-group-item">Writing fortune cookies</li>
-                          <li class="list-group-item">Competitive sudoku</li>
+                          <li class="list-group-item"><%= @character.loves_most_1 %></li>
+                          <li class="list-group-item"><%= @character.loves_most_2 %></li>
+                          <li class="list-group-item"><%= @character.loves_most_3 %></li>
                       </ul>
                   </div>
                   <div class="col-md-6">
                       <h3 class="section-header">Skills 🔥</h3>
                       <ul class="list-group">
-                          <li class="list-group-item">Ultimate backflip champion</li>
-                          <li class="list-group-item">Speaks in riddles</li>
-                          <li class="list-group-item">Makes lifting rocks look epic</li>
+                          <li class="list-group-item"><%= @character.skill_1 %></li>
+                          <li class="list-group-item"><%= @character.skill_2 %></li>
+                          <li class="list-group-item"><%= @character.skill_3 %></li>
                       </ul>
                   </div>
               </div>
@@ -44,11 +44,11 @@
               <div class="row mt-3">
                   <div class="col-md-6">
                       <h3 class="section-header">Signature Activity 🧘</h3>
-                      <div class="category-box">Makes you meditate balanced on a rock all day.</div>
+                      <div class="category-box"><%= @character.activity %></div>
                   </div>
                   <div class="col-md-6">
                       <h3 class="section-header">Best Friend 👥</h3>
-                      <div class="category-box">Luke Skywalker (but secretly loves R2-D2’s sass).</div>
+                      <div class="category-box"><%= @character.best_friend %></div>
                   </div>
               </div>
           </div>
@@ -59,7 +59,7 @@
       <div class="card p-3">
           <div class="text-center">
             <span class="price"><%= @character.price %> <i class="fa-solid fa-coins"></i> / day</span>
-            <p class="text-muted">900 years of wisdom doesn’t come cheap.</p>
+            <p class="text-muted"><%= @character.price_comment %></p>
           </div>
 
           <div class="d-flex justify-content-between mb-3">

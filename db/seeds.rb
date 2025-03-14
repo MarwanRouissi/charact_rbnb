@@ -10,7 +10,7 @@
 require 'csv'
 
 csv_text = File.read(Rails.root.join('lib', 'seeds', 'characters.csv'))
-csv = CSV.parse(csv_text, headers: true, encoding: 'ISO-8859-1')
+csv = CSV.parse(csv_text, headers: true, encoding: 'UTF-8')
 
 puts 'Cleaning DB...'
 Booking.destroy_all
@@ -23,13 +23,13 @@ users.each do |user|
 end
 
 puts 'Creating characters..'
-csv[0...5].each do |row|
+csv[0...30].each do |row|
   char = Character.new
   char.name = row['name']
   char.price = row['price']
   char.activity = row['activity']
   char.wtf_phrase = row['wtf_phrase']
-  char.url_image = row['url_image']
+  char.url_image = row['img_url']
   char.category = row['category']
   char.description = row['description']
   char.larger_description = row['larger_description']
