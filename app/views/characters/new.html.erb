@@ -1,12 +1,34 @@
-<h1>Rent your own</h1>
+<div class="container form-container">
 
-<%= simple_form_for @character do |f| %>
-<%= f.input :name %>
-<%= f.input :price %>
-<%= f.input :wtf_phrase %>
-<%= f.input :activity %>
-<%= f.input :category, collection: ["Star Wars", "The Lord of the Rings", "The Legend of Zelda", "Dune"]%>
-<%= f.input :description %>
-<%= f.input :photo, as: :file %>
-<%= f.submit class: "btn btn-flat" %>
-<% end %>
+  <h1>Rent your own</h1>
+
+  <%= simple_form_for @character do |f| %>
+  <div class="form-group-inline">
+    <div class="input-flex-grow"><%= f.input :name %></div>
+    <div class="input-flex-grow"><%= f.input :height %></div>
+    <div class="input-flex-grow"><%= f.input :eye_color %></div>
+  </div>
+  <div class="form-group-inline">
+    <div class="input-flex-grow"><%= f.input :activity %></div>
+    <div class="input-flex-grow"><%= f.input :category, collection: ["Sponge bob", "Star Wars", "The Lord of the Rings", "The Legend of Zelda", "Dune", "Frozen", "Bleach", "The Witcher", "Game of Thrones", "Metroid", "Red Dead Redemption", "Death Note", "DC Comics", "Arthurian Legends", "Knight Rider", "The Big Lebowski", "Dora the Explorer", "South Park", "Ice Age", "Breaking Bad", "Alien", "Dungeons & Dragons", "Buffy the Vampire Slayer", "The Fifth Element", "Peppa Pig", "Mr. Bean", "Beetlejuice", "How I Met Your Mother", "Dexter", "Super Mario", "Final Fantasy VII", "The Lion King", "The Smurfs", "Pokémon", "Sherlock Holmes", "Guardians of the Galaxy", "Peter Pan", "Sonic"].sort%></div>
+  </div>
+  <div class="form-group-inline">
+    <div class="input-flex-grow"><%= f.input :skill_1 %></div>
+    <div class="input-flex-grow"><%= f.input :skill_2 %></div>
+    <div class="input-flex-grow"><%= f.input :best_friend %></div>
+  </div>
+  <div class="form-group-inline">
+    <div class="input-flex-grow"><%= f.input :loves_most_1 %></div>
+    <div class="input-flex-grow"><%= f.input :loves_most_2 %></div>
+    <div class="input-flex-grow"><%= f.input :loves_most_3 %></div>
+  </div>
+  <div class="input-flex-grow"><%= f.input :wtf_phrase %></div>
+  <div class="input-flex-grow"><%= f.input :description %></div>
+  <div class="input-flex-grow"><%= f.input :larger_description %></div>
+  <div class="form-group-inline">
+   <div class="input-flex-grow"> <%= f.input :photo, as: :file %> </div>
+   <div class="input-flex-grow"> <%= f.input :price %> </div>
+  </div>
+  <%= f.submit class: "btn btn-custom" %>
+  <% end %>
+</div>

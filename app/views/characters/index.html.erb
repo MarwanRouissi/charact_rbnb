@@ -46,7 +46,8 @@
             <div class="card-body">
                 <h5 class="card-title"><%= character.name %></h5>
                 <p class="card-text"><%= character.description %></p>
-                <p class="card-price"><%= character.price %> <i class="fa-solid fa-coins"></i></p>
+                <p class="card-price"><%= character.price == character.price.to_i ? character.price.to_i : character.price%> <i class="fa-solid fa-coins"></i></p>
+
             </div>
           </div>
       <% end %>
