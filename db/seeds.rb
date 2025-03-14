@@ -23,7 +23,7 @@ users.each do |user|
 end
 
 puts 'Creating characters..'
-csv[0...30].each do |row|
+csv.each do |row|
   char = Character.new
   char.name = row['name']
   char.price = row['price']
