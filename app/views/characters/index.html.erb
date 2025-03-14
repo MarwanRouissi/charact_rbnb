@@ -7,7 +7,7 @@
       </div>
       <!-- Ajout du search -->
       <%= form_with url: characters_path, method: :get do |form| %>
-        <div class="card-body p-2">
+        <div class="card-body p-2" id="body-search">
           <%= form.text_field :query, class: "form-control form-control-sm mb-2", placeholder: "Search..." %>
             <ul class="list-group" id="items-list">
               <li class="list-group-item">
