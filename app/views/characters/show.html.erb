@@ -58,7 +58,7 @@
     <div class="col-md-4">
       <div class="card p-3">
           <div class="text-center">
-            <span class="price"><%= @character.price == @character.price.to_i ? @character.price.to_i : @character.price%> <i class="fa-solid fa-coins"></i> / day</span>
+            <span class="price" style="color:rgba(68, 0, 165, 0.50)"><%= @character.price == @character.price.to_i ? @character.price.to_i : @character.price%> <i class="fa-solid fa-coins"></i> / day</span>
             <p class="text-muted"><%= @character.price_comment %></p>
           </div>
 
