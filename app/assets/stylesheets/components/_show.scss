@@ -1,0 +1,36 @@
+.card {
+  border: 2px solid #7A1CFF;
+  border-radius: 10px;
+  background-color: white !important;
+}
+.card-header {
+  border-bottom: none;
+}
+.yoda-img {
+  max-width: 120px;
+}
+.price {
+  color: #7A1CFF;
+  font-weight: bold;
+  font-size: 20px;
+}
+.category-box {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+}
+.total-section {
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+  font-weight: bold;
+}
+.section-header {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #7A1CFF;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}

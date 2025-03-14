@@ -32,6 +32,17 @@ csv[0...5].each do |row|
   char.url_image = row['url_image']
   char.category = row['category']
   char.description = row['description']
+  char.larger_description = row['larger_description']
+  char.skill_1 = row['skill_1']
+  char.skill_2 = row['skill_2']
+  char.skill_3 = row['skill_3']
+  char.loves_most_1 = row['loves_most_1']
+  char.loves_most_2 = row['loves_most_2']
+  char.loves_most_3 = row['loves_most_3']
+  char.height = row['height']
+  char.eye_color = row['eye_color']
+  char.best_friend = row['best_friend']
+  char.price_comment = row['price_comment']
   char.user = User.all.sample
   char.save
 end

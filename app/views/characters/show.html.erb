@@ -1,10 +1,10 @@
 <div class="banner" style='background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("<%= asset_path(@character.category+".jpg") %>");'></div>
-<div class="container mt-4">
+<div class="container my-4">
   <div class="row">
       <!-- Character Details -->
       <div class="col-md-8">
-          <div class="card p-4">
-              <div class="d-flex align-items-center mb-3">
+          <div class="card p-4 py-5">
+              <div class="d-flex align-items-center mb-3 justify-content-around">
                   <% if @character.photo.attached? %>
                     <%= cl_image_tag @character.photo.key, height: 200, width: 298, crop: :fill %>
                   <% elsif @character.url_image != nil %>
@@ -55,33 +55,24 @@
       </div>
 
 <!-- Booking Sidebar -->
-      <div class="col-md-4">
-          <div class="card p-3">
-              <div class="text-center">
-                  <span class="price"><%= @character.price %> € / day</span>
-                  <p class="text-muted">900 years of wisdom doesn’t come cheap.</p>
-              </div>
-
-              <div class="d-flex justify-content-between mb-3">
-                  <div class="category-box flex-fill me-2">
-                      <small>FROM</small>
-                      <p class="mb-0"><strong>01/06/2025</strong></p>
-                  </div>
-                  <div class="category-box flex-fill ms-2">
-                      <small>TO</small>
-                      <p class="mb-0"><strong>06/06/2025</strong></p>
-                  </div>
-              </div>
-
-              <button class="btn btn-custom">Book now !</button>
-
-              <p class="text-muted text-center mt-2">You’ll be charged only on confirmation<br>... well i guess :s</p>
-
-              <div class="total-section d-flex justify-content-between">
-                  <span>Total</span>
-                  <span>1 232 €</span>
-              </div>
+    <div class="col-md-4">
+      <div class="card p-3">
+          <div class="text-center">
+            <span class="price"><%= @character.price %> <i class="fa-solid fa-coins"></i> / day</span>
+            <p class="text-muted">900 years of wisdom doesn’t come cheap.</p>
           </div>
-      </div>
+
+          <div class="d-flex justify-content-between mb-3">
+            <%= render 'bookings/form', character: @character, booking: @booking%>
+          </div>
+
+          <p class="text-muted text-center mt-2">You’ll be charged only on confirmation<br>... well i guess :s</p>
+
+          <div class="total-section d-flex justify-content-between border-top pt-3">
+            <span>Total</span>
+            <span>1 232 €</span>
+          </div>
+    </div>
+    </div>
   </div>
 </div>
