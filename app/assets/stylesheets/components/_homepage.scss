@@ -9,15 +9,13 @@
 
 .headline {
   font-size: 2rem;
-  // font-weight: bold;
-  color: black; /* Violet signature */
-  text-shadow: 2px 2px 8px rgba(86, 84, 89, 0.3); /* Effet lumineux */
+  color: black;
   margin-bottom: 20px;
   line-height: 1.5;
 }
 
 .brand-name {
-  color: #7A1CFF; /* Couleur accrocheuse */
+  color: #7A1CFF;
   font-weight: 900;
   text-transform: uppercase;
 }
@@ -28,4 +26,39 @@
   color: #333;
   font-style: italic;
   opacity: 0.8;
+}
+
+/* CSS pour les lames */
+
+.full-width-section {
+  width: 100%;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
+}
+.purple-bg {
+  background-color: #7A1CFF;
+  color: white;
+}
+.white-bg {
+  background-color: white;
+  color: #7A1CFF;
+}
+.section-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+.section-text {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+.section-image {
+  max-width: 250px;
+  height: auto;
+  border-radius: 10px;
 }
