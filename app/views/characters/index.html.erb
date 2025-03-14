@@ -3,7 +3,6 @@
     <% @characters.each do |character| %>
     <%= link_to character_path(character), class: 'text-decoration-none' do %>
         <div class="card-characters">
-        <div class="card-border"></div>
           <div class="card-img-top">
             <% if character.photo.attached? %>
               <%= cl_image_tag character.photo.key, height: 250, width: 350, crop: :fill %>
@@ -14,17 +13,12 @@
             <% end %>
           </div>
           <div class="card-body">
-            <div class="title-price">
               <h5 class="card-title"><%= character.name %></h5>
-              <p class="card-price">$ <%= character.price %></p>
-            </div>
-            <p class="card-text"><%= character.description %></p>
+              <p class="card-text"><%= character.description %></p>
+              <p class="card-price"><%= character.price %> <i class="fa-solid fa-coins"></i></p>
           </div>
         </div>
      <% end %>
     <% end %>
   </div>
 </div>
-
-
-<%#= link_to "See more", character, class: "btn btn-custom"%>

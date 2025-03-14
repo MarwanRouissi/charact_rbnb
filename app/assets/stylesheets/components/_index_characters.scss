@@ -13,13 +13,10 @@
   transition: transform 0.3s ease-in-out;
   width: 350px;
   height: 450px;
-  // border: 3px solid red ;
   border-radius: 25px;
   background-color: white;
-  // box-shadow: 10px 10px 10px #7a1cffb3;
   box-shadow: 3px 2px 12px -5px #7a1cffb3;
   position: relative;
-  z-index: 0;
 }
 
 .card-characters:hover {
@@ -32,18 +29,17 @@
   inherits: false;
 }
 
-.card-characters:hover::after{
+.card-characters:hover::after {
   content: '';
   position: absolute;
-  inset: -3px;
   height: calc(100% + 6px);
   width: calc(100% + 6px);
-  background-image: conic-gradient(from var(--angle), transparent 50%, #7a1cffb3);
+  background-image: conic-gradient(from var(--angle), transparent 70%, #7a1cffb3);
   top: 50%;
   left: 50%;
   translate: -50% -50%;
   z-index: -1;
-  padding: 6px;
+  padding: 3px;
   border-radius: inherit;
   animation: 3s spin linear infinite;
   pointer-events: none;
@@ -58,60 +54,40 @@
   }
 }
 
-// .card-characters::before{
-//   filter: blur(1.5rem);
-//   opacity: 1;
-// }
-
-
 .card-img-top img {
-  // padding: 10px;
   border-radius: 25px 25px 0px 0px;
 }
 
 .card-body{
   padding: 15px;
   position: relative;
+  background-color: white;
+  height: 200px;
+  border-radius: 0px 0px 25px 25px
 }
 
 .card-title {
   text-align: center;
   color: rgba(122, 28, 255, 0.7);
-  font-weight: 900;
-  font-size: 22px;
+  font-weight: 1000;
+  font-size: 24px;
+  background-color: white;
 }
 
 .card-text {
   color: black;
   margin-top: 12px;
   text-align: justify;
+  background-color: white;
 }
 
-// .card-price {
-  // position: absolute;
-  // color:rgba(36, 36, 36, 0.524);
-  // border: 1px solid;
-  // text-align: center;
-  // border-radius: 30px;
-  // height: 35px;
-  // align-content: center;
-  // width: 125px;
-  // margin: auto;
-  // font-size: 18px;
-  // font-weight: 1000;
-  // width: 320px;
-  // top: 140px;
-// }
-
-// .title-price {
-//  display: flex;
-// justify-content: space-around;
-// }
-
 .card-price {
-  // color:rgba(21, 21, 21, 0.524);
-  color: black;
+  color:rgba(68, 0, 165, 0.50);
   font-size: 22px;
-  font-weight: 1000;
-  text-align: center;
+  font-weight: 900;
+  background-color: white;
+  margin-bottom: 0;
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
 }
