@@ -3,3 +3,13 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "@popperjs/core"
 import "bootstrap"
+
+document.addEventListener("DOMContentLoaded", function() {
+  const checkboxes = document.querySelectorAll("input[name='category[]']");
+
+  checkboxes.forEach((checkbox) => {
+    checkbox.addEventListener("change", function() {
+      this.closest("form").submit();
+    });
+  });
+});

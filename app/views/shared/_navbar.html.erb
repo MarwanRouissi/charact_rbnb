@@ -1,7 +1,8 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+    <% logoimg = ["logo1.png", "logo2.png", "logo3.png"] %>
+      <%= image_tag logoimg.sample %>
     <% end %>
 
     <div class="navbar-title mx-auto">
