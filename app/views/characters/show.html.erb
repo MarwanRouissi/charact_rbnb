@@ -58,7 +58,7 @@
     <div class="col-md-4">
       <div class="card p-3">
           <div class="text-center">
-            <span class="price"><%= @character.price %> <i class="fa-solid fa-coins"></i> / day</span>
+            <span class="price"><%= @character.price == @character.price.to_i ? @character.price.to_i : @character.price%> <i class="fa-solid fa-coins"></i> / day</span>
             <p class="text-muted"><%= @character.price_comment %></p>
           </div>
 
@@ -66,12 +66,12 @@
             <%= render 'bookings/form', character: @character, booking: @booking%>
           </div>
 
-          <p class="text-muted text-center mt-2">You’ll be charged only on confirmation<br>... well i guess :s</p>
+          <p class="text-muted text-center mt-2 border-top pt-3">You’ll be charged only on confirmation<br>... well i guess 🤔</p>
 
-          <div class="total-section d-flex justify-content-between border-top pt-3">
+          <%# <div class="total-section d-flex justify-content-between border-top pt-3">
             <span>Total</span>
             <span>1 232 €</span>
-          </div>
+          </div> %>
     </div>
     </div>
   </div>
