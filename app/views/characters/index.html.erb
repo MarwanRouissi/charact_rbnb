@@ -1,54 +1,57 @@
 <div class="container">
-  <div class="row-container">
-    <% @characters.each do |character| %>
-    <%= link_to character_path(character), class: 'text-decoration-none' do %>
-        <div class="card-characters">
-          <div class="card-img-top">
-            <% if character.photo.attached? %>
-              <%= cl_image_tag character.photo.key, height: 250, width: 350 %>
-            <% elsif character.url_image != nil %>
-              <%= image_tag character.url_image, height: 250, width: 350 %>
-            <% else %>
-              <%= image_tag "image.png", height: 250, width: 350 %>
-            <% end %>
-          </div>
-          <div class="card-body">
-              <h5 class="card-title"><%= character.name %></h5>
-              <p class="card-text"><%= character.description %></p>
-              <p class="card-price"><%= character.price %> <i class="fa-solid fa-coins"></i></p>
-          </div>
+  <!-- Début du filter cards -->
+  <div class="d-flex">
+    <div class="filter-container card bg-white"  id="card-search" style="width: 250px;">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span> <%= @characters.count %>/<%= @totalchars.count %> Characters</span>
+      </div>
+      <!-- Ajout du search -->
+      <%= form_with url: characters_path, method: :get do |form| %>
+        <div class="card-body p-2">
+          <%= form.text_field :query, class: "form-control form-control-sm mb-2", placeholder: "Search..." %>
+            <ul class="list-group" id="items-list">
+              <li class="list-group-item">
+                <%= form.label :category, "Select a category" %>
+                <% Character.select(:category).distinct.order(:category).pluck(:category).each do |category| %>
+                  <div class="form-check">
+                    <%= check_box_tag "category[]", category, params[:category]&.include?(category), class: "form-check-input" %>
+                    <%= label_tag "category_#{category}", category, class: "form-check-label" %>
+                  </div>
+                <% end %>
+              </li>
+            </ul>
         </div>
-     <% end %>
-    <% end %>
+        <div class="card-footer">
+          <%= form.submit "Search", class: "btn btn-sm btn-custom" %>
+          <%= link_to "Reset", characters_path, class: "btn btn-sm btn-outline-secondary" %>
+        </div>
+      <% end  %>
+      <!-- Fin du search -->
+    </div>
+    <!-- Fin du filter cards -->
+    <!-- Début du card character -->
+    <div class="row-container">
+      <% @characters.each do |character| %>
+      <%= link_to character_path(character), class: 'text-decoration-none' do %>
+          <div class="card-characters">
+            <div class="card-img-top">
+              <% if character.photo.attached? %>
+                <%= cl_image_tag character.photo.key, height: 250, width: 350, class: "cloudin-img" %>
+              <% elsif character.url_image != nil %>
+                <%= image_tag character.url_image, height: 250, width: 350, class: "cloudin-img" %>
+              <% else %>
+                <%= image_tag "image.png", height: 250, width: 350 %>
+              <% end %>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"><%= character.name %></h5>
+                <p class="card-text"><%= character.description %></p>
+                <p class="card-price"><%= character.price %> <i class="fa-solid fa-coins"></i></p>
+            </div>
+          </div>
+      <% end %>
+      <% end %>
+    </div>
+    <!-- Fin du card character -->
   </div>
 </div>
-
-<!-- Début du filter cards -->
-<div class="card bg-white" style="width: 250px;">
-  <div class="card-header d-flex justify-content-between align-items-center">
-    <span> <%= @characters.count %>/<%= @totalchars.count %> Characters</span>
-  </div>
-  <!-- ajout du search -->
-  <%= form_with url: characters_path, method: :get do |form| %>
-    <div class="card-body p-2">
-      <%= form.text_field :query, class: "form-control form-control-sm mb-2", placeholder: "Search..." %>
-        <ul class="list-group" id="items-list">
-          <li class="list-group-item">
-            <%= form.label :category, "Select a category" %>
-            <% Character.select(:category).distinct.order(:category).pluck(:category).each do |category| %>
-              <div class="form-check">
-                <%= check_box_tag "category[]", category, params[:category]&.include?(category), class: "form-check-input" %>
-                <%= label_tag "category_#{category}", category, class: "form-check-label" %>
-              </div>
-            <% end %>
-          </li>
-        </ul>
-    </div>
-    <div class="card-footer">
-      <%= form.submit "Search", class: "btn btn-sm btn-outline-primary" %>
-      <%= link_to "Reset", characters_path, class: "btn btn-sm btn-outline-secondary" %>
-    </div>
-  <% end  %>
-  <!-- fin du search -->
-</div>
-<!-- Fin du filter cards -->
