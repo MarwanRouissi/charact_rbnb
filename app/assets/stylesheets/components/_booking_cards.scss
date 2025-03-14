@@ -5,12 +5,38 @@
 .booking-card-price {
   margin-top: 15px;
   margin-left: 20px;
+  font-weight: bold;
+  color: rgba(68, 0, 165, 0.5);
+}
+
+.card-transform {
+  transition: transform 0.3s ease-in-out;
+}
+
+.card-transform:hover {
+  transform: scale(1.1)
 }
 
 .delete-btn {
   position: absolute;
   margin-right: 10px;
-  right: 0px;
+  right: 10px;
+  font-size: 20px;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+
+  form {
+    display: inline;
+  }
+
+  button {
+    all: unset;
+    cursor: pointer;
+  }
+}
+
+.booking-card:hover .delete-btn {
+  opacity: 1;
 }
 
 .booking-card {
@@ -18,10 +44,12 @@
   box-shadow: 0px 0px 10px rgba(68, 0, 165, 0.36);
   border-radius: 5px;
   width: 100%;
+  // transition: transform 0.3s ease-in-out;
 }
 
-.booking-card:hover {
+.card-transform:hover .booking-card {
   box-shadow: 0px 0px 10px rgba(122, 28, 255, 0.7);
+  // transform: scale(1.1)
 }
 
 .booking-character-text {
@@ -50,6 +78,17 @@
   border-radius: 5px;
   font-size: 20px;
 }
+
+.booking-select {
+    background-color: white;
+    color: #7A1CFF;
+    border: 1px solid #7A1CFF;
+}
+
+.booking-select:focus {
+  border: 2px solid #7A1CFF;
+}
+
 
 // .booking-pending-color {
 //   background-color: rgba(253, 126, 20, 0.5);
@@ -84,6 +123,6 @@
 
 .booking-status-position {
   position: absolute;
-  bottom: 1px;
-  right: 70px;
+  bottom: -14px;
+  right: 16px;
 }

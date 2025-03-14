@@ -9,6 +9,11 @@ export default class extends Controller {
 
 	preventPropagation(event) {
 		event.stopPropagation();
-		window.confirm("Are you sure you want to delete this booking?");
+		const isConfirmed = window.confirm(
+			"Are you sure you want to delete this booking?",
+		);
+		if (!isConfirmed) {
+			event.preventDefault();
+		}
 	}
 }

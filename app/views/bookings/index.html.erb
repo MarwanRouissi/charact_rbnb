@@ -2,121 +2,133 @@
 <div class="mt-4 mx-4 w-100">
   <h2 class="text-color-custom mb-2">Your bookings</h2>
 
-  <div class="d-flex booking-card-gap m-3 flex-wrap">
-    <% @user_bookings.each do |booking| %>
 
-      <%= link_to character_path(booking.character), class: 'text-decoration-none' do %>
-        <div class="booking-card p-2 booking-position-relative" data-controller="delete-button-booking">
+  <% if @user_bookings.any? %>
+    <div class="d-flex booking-card-gap m-3 flex-wrap">
+      <% @user_bookings.each do |booking| %>
 
-          <div>
-            <% if booking.character.photo.attached?%>
-              <%= cl_image_tag booking.character.photo.key, class: 'booking-card-img' %>
-            <% elsif booking.character.url_image.present? %>
-              <%= image_tag booking.character.url_image, class: 'booking-card-img' %>
-            <% else %>
-              <%= image_tag "image.png", class: 'booking-card-img' %>
-            <% end %>
-          </div>
-
-          <div>
-            <div class="booking-card-inside">
-              <span class="booking-character-text"><%= booking.character.name %></span>
-            </div>
-            <div class="booking-card-inside text-black">
-              <span><%= booking.start_date %> /
-              <br>
-              <%= booking.end_date %></span>
-            </div>
-            <div class="d-flex">
-              <span class="text-black booking-card-price">$ <%= booking.character.price %></span>
-              <div class="mx-3">
-                <% if booking.book_status == true %>
-                  <i class="fa-solid fa-check booking-status-color"></i>
-                <% elsif booking.book_status == false %>
-                  <i class="fa-solid fa-xmark booking-status-color"></i>
-                <% else %>
-                  <i class="fa-solid fa-hourglass-half booking-status-color"></i>
-                <% end %>
-              </div>
-            </div>
-          </div>
-
-          <div class="delete-btn">
-            <%= button_to booking_path(booking),
-                  method: :delete,
-                  data: {turbo_method: :delete, turbo_confirmation: "Are you sure you want to delete this booking?",
-                  action: "click->delete-button-booking#preventPropagation", booking_status_select_target: "deleteBtn" } do %>
-              <i class="fa-solid fa-trash text-color-custom"></i>
-            <% end %>
-          </div>
-
-        </div>
-      <% end %>
-
-    <% end %>
-  </div>
-</div>
-
-<div class="mt-4 mx-4 w-100">
-  <h2 class="text-color-custom">Booking requests for your characters</h2>
-
-  <div class="d-flex booking-card-gap m-3 flex-wrap">
-    <% @bookings_to_review.each do |booking| %>
-      <div data-controller="booking-status-select" class="booking-position-relative">
         <%= link_to character_path(booking.character), class: 'text-decoration-none' do %>
-          <div class="booking-card p-2">
-
-          <div>
-            <% if booking.character.photo.attached?%>
-              <%= cl_image_tag booking.character.photo.key, class: 'booking-card-img' %>
-            <% elsif booking.character.url_image.present? %>
-              <%= image_tag booking.character.url_image, class: 'booking-card-img' %>
-            <% else %>
-            <%= image_tag "image.png", class: 'booking-card-img' %>
-            <% end %>
-          </div>
+          <div class="booking-card p-2 booking-position-relative card-transform" data-controller="delete-button-booking">
 
             <div>
-              <div class="booking-card-inside booking-character-text">
-                <span><%= booking.character.name %></span>
-              </div>
-              <div class="booking-card-inside text-black">
-                <span><%= booking.user.email %></span>
+              <% if booking.character.photo.attached?%>
+                <%= cl_image_tag booking.character.photo.key, class: 'booking-card-img' %>
+              <% elsif booking.character.url_image.present? %>
+                <%= image_tag booking.character.url_image, class: 'booking-card-img' %>
+              <% else %>
+                <%= image_tag "image.png", class: 'booking-card-img' %>
+              <% end %>
+            </div>
+
+            <div>
+              <div class="booking-card-inside">
+                <span class="booking-character-text"><%= booking.character.name %></span>
               </div>
               <div class="booking-card-inside text-black">
                 <span><%= booking.start_date %> /
                 <br>
                 <%= booking.end_date %></span>
               </div>
-        <% end %>
-              <div class="booking-card-inside" data-action="click->booking-status-select#display">
-
-                  <% case booking.book_status %>
-                    <% when true %>
-                      <i class="fa-solid fa-check booking-status-color"></i>
-                    <% when false %>
-                      <i class="fa-solid fa-xmark booking-status-color"></i>
-                    <% when nil %>
-                      <i class="fa-solid fa-hourglass-half booking-status-color"></i>
+              <div class="d-flex">
+                <span class="booking-card-price"><%= booking.character.price == booking.character.price.to_i ? booking.character.price.to_i : booking.character.price%> <i class="fa-solid fa-coins"></i></span>
+                <div class="mx-3">
+                  <% if booking.book_status == true %>
+                    <i class="fa-solid fa-check booking-status-color"></i>
+                  <% elsif booking.book_status == false %>
+                    <i class="fa-solid fa-xmark booking-status-color"></i>
+                  <% else %>
+                    <i class="fa-solid fa-hourglass-half booking-status-color"></i>
                   <% end %>
+                </div>
               </div>
-
             </div>
-          </div>
 
-
-        <% if booking.book_status.nil? %>
-            <div class="mt-3 booking-status-position d-none" data-booking-status-select-target="selectList">
-              <%= simple_form_for booking, html: { data: { booking_status_select_target: "submit" } } do |f| %>
-                <%= f.input_field :book_status, collection: %i[pending accepted declined], prompt: booking.book_status,
-                 data: { action: "change->booking-status-select#submitStatus"} %>
-                <%# <%= f.button :submit, class: 'btn btn-custom ms-2' %>
+            <div class="delete-btn">
+              <%= button_to booking_path(booking),
+                    method: :delete,
+                    data: {turbo_confirmation: "Are you sure you want to delete this booking?",
+                    action: "click->delete-button-booking#preventPropagation", booking_status_select_target: "deleteBtn" } do %>
+                <i class="fa-solid fa-trash text-color-custom"></i>
               <% end %>
             </div>
-        <% end %>
-      </div>
 
-    <% end %>
+          </div>
+        <% end %>
+
+      <% end %>
+    </div>
+  <% else %>
+    <h4 class="my-3" style="color: rgba(68, 0, 165, 0.5)">No bookings yet</h4>
+  <% end %>
   </div>
+
+
+<div class="mt-4 mx-4 w-100">
+  <h2 class="text-color-custom">Booking requests for your characters</h2>
+
+  <% if @bookings_to_review.any? %>
+    <div class="d-flex booking-card-gap m-3 flex-wrap">
+      <% @bookings_to_review.each do |booking| %>
+        <div data-controller="booking-status-select" class="booking-position-relative card-transform">
+          <%= link_to character_path(booking.character), class: 'text-decoration-none' do %>
+            <div class="booking-card p-2">
+
+            <div>
+              <% if booking.character.photo.attached?%>
+                <%= cl_image_tag booking.character.photo.key, class: 'booking-card-img' %>
+              <% elsif booking.character.url_image.present? %>
+                <%= image_tag booking.character.url_image, class: 'booking-card-img' %>
+              <% else %>
+              <%= image_tag "image.png", class: 'booking-card-img' %>
+              <% end %>
+            </div>
+
+              <div>
+                <div class="booking-card-inside booking-character-text">
+                  <span><%= booking.character.name %></span>
+                </div>
+                <div class="booking-card-inside text-black">
+                  <span><%= booking.user.email %></span>
+                </div>
+                <div class="booking-card-inside text-black">
+                  <span><%= booking.start_date %> /
+                  <br>
+                  <%= booking.end_date %></span>
+                </div>
+          <% end %>
+                <div class="d-flex" data-action="click->booking-status-select#display">
+                  <span class="booking-card-price"><%= booking.character.price == booking.character.price.to_i ? booking.character.price.to_i : booking.character.price%> <i class="fa-solid fa-coins"></i></span>
+                  <div class="mx-3">
+                    <% case booking.book_status %>
+                      <% when true %>
+                        <i class="fa-solid fa-check booking-status-color"></i>
+                      <% when false %>
+                        <i class="fa-solid fa-xmark booking-status-color"></i>
+                      <% when nil %>
+                        <i class="fa-solid fa-hourglass-half booking-status-color"></i>
+                    <% end %>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+
+          <% if booking.book_status.nil? %>
+              <div class="mt-3 booking-status-position d-none" data-booking-status-select-target="selectList">
+                <%= simple_form_for booking, html: { data: { booking_status_select_target: "submit" } } do |f| %>
+                  <%= f.input_field :book_status, collection: %i[pending accepted declined], prompt: booking.book_status,
+                  data: { action: "change->booking-status-select#submitStatus"}, class: 'booking-select' %>
+                  <%# <%= f.button :submit, class: 'btn btn-custom ms-2' %>
+                <% end %>
+              </div>
+          <% end %>
+        </div>
+
+      <% end %>
+    </div>
+  <% else %>
+    <h4 class="my-3" style="color: rgba(68, 0, 165, 0.5)">No booking requests yet</h4>
+  <% end %>
   </div>
 </div>
