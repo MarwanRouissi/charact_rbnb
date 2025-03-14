@@ -10,7 +10,7 @@
 require 'csv'
 
 csv_text = File.read(Rails.root.join('lib', 'seeds', 'characters.csv'))
-csv = CSV.parse(csv_text, headers: true, encoding: 'ISO-8859-1')
+csv = CSV.parse(csv_text, headers: true, encoding: 'UTF-8')
 
 puts 'Cleaning DB...'
 Booking.destroy_all
@@ -23,15 +23,26 @@ users.each do |user|
 end
 
 puts 'Creating characters..'
-csv[0...5].each do |row|
+csv.each do |row|
   char = Character.new
   char.name = row['name']
   char.price = row['price']
   char.activity = row['activity']
   char.wtf_phrase = row['wtf_phrase']
-  char.url_image = row['url_image']
+  char.url_image = row['img_url']
   char.category = row['category']
   char.description = row['description']
+  char.larger_description = row['larger_description']
+  char.skill_1 = row['skill_1']
+  char.skill_2 = row['skill_2']
+  char.skill_3 = row['skill_3']
+  char.loves_most_1 = row['loves_most_1']
+  char.loves_most_2 = row['loves_most_2']
+  char.loves_most_3 = row['loves_most_3']
+  char.height = row['height']
+  char.eye_color = row['eye_color']
+  char.best_friend = row['best_friend']
+  char.price_comment = row['price_comment']
   char.user = User.all.sample
   char.save
 end
