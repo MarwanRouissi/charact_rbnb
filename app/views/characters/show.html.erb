@@ -1,41 +1,87 @@
-<div class="banner" style='background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("<%= asset_path(@character.category+".jpg") %>");'>
-  <div class="container">
-    <div class="d-flex mx-3">
-      <div class="mx-1 border border-dark ml-auto">
-      <% if @character.photo.attached? %>
-        <%= cl_image_tag @character.photo.key, height: 200, width: 298, crop: :fill %>
-      <% elsif @character.url_image != nil %>
-        <%= image_tag @character.url_image, height: 200, width: 298 %>
-      <% else %>
-        <%= image_tag "image.png", height: 200, width: 298 %>
-      <% end %>
+<div class="banner" style='background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("<%= asset_path(@character.category+".jpg") %>");'></div>
+<div class="container mt-4">
+  <div class="row">
+      <!-- Character Details -->
+      <div class="col-md-8">
+          <div class="card p-4">
+              <div class="d-flex align-items-center mb-3">
+                  <% if @character.photo.attached? %>
+                    <%= cl_image_tag @character.photo.key, height: 200, width: 298, crop: :fill %>
+                  <% elsif @character.url_image != nil %>
+                    <%= image_tag @character.url_image, height: 200, width: 298 %>
+                  <% else %>
+                    <%= image_tag "image.png", height: 200, width: 298 %>
+                  <% end %>
+                  <div>
+                      <h1 class="text-primary"><%= @character.name %></h1>
+                      <p class="fst-italic"><%= @character.wtf_phrase %></p>
+                      <p><strong>Height:</strong> 0.66m | <strong>Eye Color:</strong> Green</p>
+                  </div>
+              </div>
+              <p>A 900-year-old Jedi Master, Yoda is the ultimate wise mentor, cryptic speech included. He may walk like a turtle, but don’t let that fool you—he can backflip into battle and fling enemies around with his mind. He enjoys meditation, lifting rocks for fun, and judging people silently.</p>
+
+              <!-- He loves & Skills -->
+              <div class="row">
+                  <div class="col-md-6">
+                      <h3 class="section-header">He loves ❤️</h3>
+                      <ul class="list-group">
+                          <li class="list-group-item">Tai Chi in the park</li>
+                          <li class="list-group-item">Writing fortune cookies</li>
+                          <li class="list-group-item">Competitive sudoku</li>
+                      </ul>
+                  </div>
+                  <div class="col-md-6">
+                      <h3 class="section-header">Skills 🔥</h3>
+                      <ul class="list-group">
+                          <li class="list-group-item">Ultimate backflip champion</li>
+                          <li class="list-group-item">Speaks in riddles</li>
+                          <li class="list-group-item">Makes lifting rocks look epic</li>
+                      </ul>
+                  </div>
+              </div>
+
+              <!-- Signature Activity & Best Friend -->
+              <div class="row mt-3">
+                  <div class="col-md-6">
+                      <h3 class="section-header">Signature Activity 🧘</h3>
+                      <div class="category-box">Makes you meditate balanced on a rock all day.</div>
+                  </div>
+                  <div class="col-md-6">
+                      <h3 class="section-header">Best Friend 👥</h3>
+                      <div class="category-box">Luke Skywalker (but secretly loves R2-D2’s sass).</div>
+                  </div>
+              </div>
+          </div>
       </div>
-      <div class="mx-2">
-        <h1 class="py-3"><%= @character.name %></h1>
-        <p class="align-text-bottom">
-          <i class="fa-solid fa-quote-left"></i>
-          <%= @character.wtf_phrase %>
-          <i class="fa-solid fa-quote-right"></i>
-        </p>
+
+<!-- Booking Sidebar -->
+      <div class="col-md-4">
+          <div class="card p-3">
+              <div class="text-center">
+                  <span class="price"><%= @character.price %> € / day</span>
+                  <p class="text-muted">900 years of wisdom doesn’t come cheap.</p>
+              </div>
+
+              <div class="d-flex justify-content-between mb-3">
+                  <div class="category-box flex-fill me-2">
+                      <small>FROM</small>
+                      <p class="mb-0"><strong>01/06/2025</strong></p>
+                  </div>
+                  <div class="category-box flex-fill ms-2">
+                      <small>TO</small>
+                      <p class="mb-0"><strong>06/06/2025</strong></p>
+                  </div>
+              </div>
+
+              <button class="btn btn-custom">Book now !</button>
+
+              <p class="text-muted text-center mt-2">You’ll be charged only on confirmation<br>... well i guess :s</p>
+
+              <div class="total-section d-flex justify-content-between">
+                  <span>Total</span>
+                  <span>1 232 €</span>
+              </div>
+          </div>
       </div>
-    </div>
-  </div>
-</div>
-<div class="d-flex justify-content-between my-2">
-  <div class="col-9 text-center">
-    <p><%= @character.activity %></p>
-    <p><%= @character.description %></p>
-  </div>
-  <div data-controller="update-total" class="border border-dark col-2 mx-3 rounded-3 p-2">
-    <div>
-      <h3 class="text-center">Book it now!</h3>
-      <p><i class="fa-solid fa-coins"></i> <strong data-update-total-target="price"><%= @character.price %></strong> per day</p>
-      <div data-update-total-target="form" class="d-flex">
-        <%= render 'bookings/form', character: @character, booking: @booking%>
-      </div>
-    </div>
-    <%# <div class="my-3 border-top pt-3">
-      <p>Total</p>
-    </div> %>
   </div>
 </div>
